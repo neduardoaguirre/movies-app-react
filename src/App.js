@@ -2,14 +2,18 @@ import React from 'react';
 import Form from './components/Form';
 import MovieListing from './components/MoviesListing';
 
+import MoviesProviders from './context/Movies';
+
 function App() {
   return (
-    <div className="container">
-      <div className="row">
-        <Form />
+    <MoviesProviders>
+      <div className="container">
+        <div className="row">
+          <Form />
+        </div>
+        <MovieListing />
       </div>
-      <MovieListing />
-    </div>
+    </MoviesProviders>
   );
 }
 

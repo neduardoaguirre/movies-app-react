@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Error from './Error';
 
+import { MoviesContext } from '../context/Movies';
+
 const Form = () => {
-  const [search, setSearch] = useState('');
+  const { setSearch, setQuery } = useContext(MoviesContext);
+
+  const [movie, setMovie] = useState('');
   const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (search.trim() === '') {
+    if (movie.trim() === '') {
       setError(true);
       return;
     }
     setError(false);
-    console.log(search);
+    console.log(movie);
+    setSearch(movie);
+    setQuery(true);
   };
 
   return (
@@ -25,7 +31,7 @@ const Form = () => {
           <input
             type="text"
             className="form-control"
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => setMovie(e.target.value)}
           />
         </div>
         <div className="form-group col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
