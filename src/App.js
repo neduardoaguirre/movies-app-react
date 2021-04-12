@@ -1,11 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Form from './components/Form';
+import MovieListing from './components/MoviesListing';
 
 function App() {
   return (
-    <Fragment>
-      <Form />
-    </Fragment>
+    <div className="container">
+      <div className="row">
+        <Form />
+      </div>
+      <MovieListing />
+    </div>
   );
 }
 

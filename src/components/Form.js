@@ -31,7 +31,7 @@ const Form = () => {
         <div className="form-group col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
           <input
             type="submit"
-            className="btn btn-block btn-warning text-uppercase"
+            className="btn btn-block btn-warning text-uppercase outline-none"
             value="Search"
           />{' '}
           {error ? <Error message="Please, add search topic" /> : null}
