@@ -3,16 +3,19 @@ import Form from './components/Form';
 import MovieListing from './components/MoviesListing';
 
 import MoviesProviders from './context/Movies';
+import OverviewProvider from './context/Overview';
 
 function App() {
   return (
     <MoviesProviders>
-      <div className="container">
-        <div className="row">
-          <Form />
+      <OverviewProvider>
+        <div className="container">
+          <div className="row">
+            <Form />
+          </div>
+          <MovieListing />
         </div>
-        <MovieListing />
-      </div>
+      </OverviewProvider>
     </MoviesProviders>
   );
 }

@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import ModalOverview from './ModalOverview';
 
-const Movie = ({ title, vote, poster, overview }) => {
+import { OverviewContext } from '../context/Overview';
+
+const Movie = ({ title, vote, poster, id }) => {
+  const [open, setOpen] = useState(false);
+  const { setMovieId } = useContext(OverviewContext);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   const PATH_IMG = 'https://image.tmdb.org/t/p/w1280';
 
   const voteAverage = (vote) => {
@@ -20,10 +30,22 @@ const Movie = ({ title, vote, poster, overview }) => {
           <img src={PATH_IMG + poster} alt={title} className="card-img-top" />
         ) : null}
         <div className="card-body d-flex justify-content-between align-items-center">
-          <span className="card-text text-white pr-2">{title}</span>
+          {/* <span className="card-text text-white pr-2">{title}</span> */}
+          {/* <input type="submit" value={title} className="pr-2" /> */}
+          <button
+            className="btn btn-link text-white btn-outline-*"
+            onClick={() => {
+              setMovieId(id);
+              handleOpen();
+            }}
+          >
+            {title}
+          </button>
+
           <div className={`rounded bg-${voteAverage(vote)} p-2 text-white`}>
             {vote}
           </div>
+          <ModalOverview open={open} setOpen={setOpen} />
         </div>
       </div>
     </div>

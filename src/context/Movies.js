@@ -9,12 +9,10 @@ const MoviesProvider = (props) => {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    console.log(query);
     if (!query) {
       const getMovies = async () => {
         const URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.REACT_APP_API_KEY}&page=1`;
         const res = await axios.get(URL);
-        console.log(res.data.results);
         setMovies(res.data.results);
       };
       getMovies();
@@ -22,7 +20,6 @@ const MoviesProvider = (props) => {
       const searchMovie = async () => {
         const URL = `https://api.themoviedb.org/3/search/movie?&api_key=${process.env.REACT_APP_API_KEY}&query=${search}`;
         const res = await axios.get(URL);
-        console.log(res.data.results);
         setMovies(res.data.results);
       };
       searchMovie();
