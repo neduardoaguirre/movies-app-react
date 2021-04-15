@@ -6,11 +6,11 @@ import Error from './Error';
 import { MoviesContext } from '../context/Movies';
 
 const MoviesListing = () => {
-  const { movies, loading } = useContext(MoviesContext);
+  const { movies, loading, empty } = useContext(MoviesContext);
 
   const element = loading ? (
     <Spinner />
-  ) : movies.length > 0 ? (
+  ) : !empty ? (
     movies.map((movie) => (
       <Movie
         key={movie.id}
@@ -21,8 +21,8 @@ const MoviesListing = () => {
       />
     ))
   ) : (
-    <div className="d-flex justify-content-center col-12">
-      <Error message="Not Found" />
+    <div className="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
+      <Error message="Not Found. Please try again." />
     </div>
   );
 

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import ModalOverview from './ModalOverview';
+import PropTypes from 'prop-types';
 
 import { OverviewContext } from '../context/Overview';
 
@@ -50,6 +51,13 @@ const Movie = ({ title, vote, poster, id }) => {
       </div>
     </div>
   );
+};
+
+Movie.propTypes = {
+  title: PropTypes.string.isRequired,
+  vote: PropTypes.number.isRequired,
+  poster: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default Movie;

@@ -9,6 +9,10 @@ const Form = () => {
   const [movie, setMovie] = useState('');
   const [error, setError] = useState(false);
 
+  const handleChange = (e) => {
+    setMovie(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (movie.trim() === '') {
@@ -32,7 +36,7 @@ const Form = () => {
             type="text"
             placeholder="Star Wars, Psycho, The Godfather..."
             className="form-control"
-            onChange={(e) => setMovie(e.target.value)}
+            onChange={handleChange}
           />
         </div>
         <div className="form-group col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
