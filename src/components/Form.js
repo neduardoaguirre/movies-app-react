@@ -4,7 +4,7 @@ import Error from './Error';
 import { MoviesContext } from '../context/Movies';
 
 const Form = () => {
-  const { setSearch, setQuery } = useContext(MoviesContext);
+  const { setSearch, setQuery, setLoading } = useContext(MoviesContext);
 
   const [movie, setMovie] = useState('');
   const [error, setError] = useState(false);
@@ -16,7 +16,7 @@ const Form = () => {
       return;
     }
     setError(false);
-    console.log(movie);
+    setLoading(true);
     setSearch(movie);
     setQuery(true);
   };
@@ -30,6 +30,7 @@ const Form = () => {
         <div className="form-group col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 mb-2">
           <input
             type="text"
+            placeholder="Star Wars, Psycho, The Godfather..."
             className="form-control"
             onChange={(e) => setMovie(e.target.value)}
           />
@@ -39,7 +40,7 @@ const Form = () => {
             type="submit"
             className="btn btn-block btn-warning text-uppercase outline-none"
             value="Search"
-          />{' '}
+          />
           {error ? <Error message="Please, add search topic" /> : null}
         </div>
       </div>

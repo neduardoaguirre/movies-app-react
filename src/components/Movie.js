@@ -30,10 +30,8 @@ const Movie = ({ title, vote, poster, id }) => {
           <img src={PATH_IMG + poster} alt={title} className="card-img-top" />
         ) : null}
         <div className="card-body d-flex justify-content-between align-items-center">
-          {/* <span className="card-text text-white pr-2">{title}</span> */}
-          {/* <input type="submit" value={title} className="pr-2" /> */}
           <button
-            className="btn btn-link text-white btn-outline-*"
+            className="btn btn-link text-white shadow-none p-0 text-left"
             onClick={() => {
               setMovieId(id);
               handleOpen();
@@ -42,7 +40,9 @@ const Movie = ({ title, vote, poster, id }) => {
             {title}
           </button>
 
-          <div className={`rounded bg-${voteAverage(vote)} p-2 text-white`}>
+          <div
+            className={`rounded bg-${voteAverage(vote)} ml-2 p-2 text-white`}
+          >
             {vote}
           </div>
           <ModalOverview open={open} setOpen={setOpen} />

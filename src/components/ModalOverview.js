@@ -64,7 +64,7 @@ const ModalOverview = ({ open, setOpen }) => {
               ))
             : null}
         </div>
-        <p className="mt-2">{overview}</p>
+        <p className="mt-3">{overview}</p>
       </div>
     </Modal>
   );
