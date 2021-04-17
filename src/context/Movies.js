@@ -13,7 +13,7 @@ const MoviesProvider = (props) => {
   useEffect(() => {
     const getMovies = async () => {
       setLoading(true);
-      const URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.REACT_APP_API_KEY}&page=1`;
+      const URL = `/.netlify/functions/getMovies`;
       const res = await axios.get(URL);
       const data = res.data.results;
       setLoading(false);
@@ -25,7 +25,7 @@ const MoviesProvider = (props) => {
   useEffect(() => {
     if (query) {
       const searchMovie = async () => {
-        const URL = `https://api.themoviedb.org/3/search/movie?&api_key=${process.env.REACT_APP_API_KEY}&query=${search}`;
+        const URL = `/.netlify/functions/searchMovie?query=${search}`;
         const res = await axios.get(URL);
         const data = res.data.results;
         setLoading(false);

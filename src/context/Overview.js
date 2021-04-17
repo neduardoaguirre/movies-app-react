@@ -10,8 +10,9 @@ const OverviewProvider = (props) => {
   useEffect(() => {
     const getOverview = async () => {
       if (!movieId) return;
-      const URL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}`;
+      const URL = `/.netlify/functions/getOverview?movieId=${movieId}`;
       const res = await axios.get(URL);
+      console.log(res);
       setInfo(res.data);
     };
     getOverview();
