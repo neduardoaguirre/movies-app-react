@@ -12,7 +12,6 @@ const OverviewProvider = (props) => {
       if (!movieId) return;
       const URL = `/.netlify/functions/getOverview?movieId=${movieId}`;
       const res = await axios.get(URL);
-      console.log(res);
       setInfo(res.data);
     };
     getOverview();

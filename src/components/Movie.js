@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import ModalOverview from './ModalOverview';
 import PropTypes from 'prop-types';
+import ImageNotAvailable from '../images/Poster-Not-Available.png';
 
 import { OverviewContext } from '../context/Overview';
 
@@ -29,7 +30,13 @@ const Movie = ({ title, vote, poster, id }) => {
       <div className="card bg-secondary">
         {poster ? (
           <img src={PATH_IMG + poster} alt={title} className="card-img-top" />
-        ) : null}
+        ) : (
+          <img
+            src={ImageNotAvailable}
+            alt="Not available"
+            className="card-img-top"
+          />
+        )}
         <div className="card-body d-flex justify-content-between align-items-center">
           <button
             className="btn btn-link text-white shadow-none p-0 text-left"
@@ -56,7 +63,7 @@ const Movie = ({ title, vote, poster, id }) => {
 Movie.propTypes = {
   title: PropTypes.string.isRequired,
   vote: PropTypes.number.isRequired,
-  poster: PropTypes.string.isRequired,
+  poster: PropTypes.string,
   id: PropTypes.number.isRequired,
 };
 
